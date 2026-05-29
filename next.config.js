@@ -13,10 +13,6 @@ const nextConfig = {
   },
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
-  // Disable static optimization globally — all pages are server-rendered
-  experimental: {
-    missingSuspenseWithCSRBailout: false,
-  },
 }
 
 module.exports = nextConfig
