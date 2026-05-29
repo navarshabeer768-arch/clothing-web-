@@ -23,3 +23,5 @@ export default function HomePage() {
     </>
   )
 }
+
+export const dynamic = 'force-dynamic'

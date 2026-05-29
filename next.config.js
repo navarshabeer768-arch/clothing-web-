@@ -11,11 +11,11 @@ const nextConfig = {
       { protocol: 'https', hostname: 'plus.unsplash.com' },
     ],
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
+  // Disable static optimization globally — all pages are server-rendered
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
   },
 }
 

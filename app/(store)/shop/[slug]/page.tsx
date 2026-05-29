@@ -14,3 +14,5 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default function ProductPage({ params }: Props) {
   return <ProductDetailPage slug={params.slug} />
 }
+
+export const dynamic = 'force-dynamic'

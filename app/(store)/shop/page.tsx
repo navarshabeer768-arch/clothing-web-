@@ -9,3 +9,5 @@ export const metadata: Metadata = {
 export default function Shop() {
   return <ShopPage />
 }
+
+export const dynamic = 'force-dynamic'
