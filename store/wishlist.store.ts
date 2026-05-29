@@ -1,7 +1,7 @@
 'use client'
 
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { persist, createJSONStorage } from 'zustand/middleware'
 
 interface WishlistStore {
   productIds: string[]
@@ -16,36 +16,20 @@ export const useWishlistStore = create<WishlistStore>()(
   persist(
     (set, get) => ({
       productIds: [],
-
-      addItem: (productId) => {
-        set((state) => ({
-          productIds: [...new Set([...state.productIds, productId])],
-        }))
-      },
-
-      removeItem: (productId) => {
-        set((state) => ({
-          productIds: state.productIds.filter((id) => id !== productId),
-        }))
-      },
-
+      addItem: (productId) => set((state) => ({ productIds: [...new Set([...state.productIds, productId])] })),
+      removeItem: (productId) => set((state) => ({ productIds: state.productIds.filter((id) => id !== productId) })),
       toggleItem: (productId) => {
-        const { isWishlisted, addItem, removeItem } = get()
-        if (isWishlisted(productId)) {
-          removeItem(productId)
-        } else {
-          addItem(productId)
-        }
+        get().isWishlisted(productId) ? get().removeItem(productId) : get().addItem(productId)
       },
-
-      isWishlisted: (productId) => {
-        return get().productIds.includes(productId)
-      },
-
+      isWishlisted: (productId) => get().productIds.includes(productId),
       getCount: () => get().productIds.length,
     }),
     {
       name: 'luxe-wishlist',
+      storage: createJSONStorage(() => {
+        if (typeof window !== 'undefined') return localStorage
+        return { getItem: () => null, setItem: () => {}, removeItem: () => {} }
+      }),
     }
   )
 )
