@@ -10,31 +10,17 @@ export const metadata: Metadata = {
     template: '%s | LUXÉ',
   },
   description: 'Discover the finest luxury fashion, clothing, and watches. Curated collections for the discerning few.',
-  keywords: ['luxury fashion', 'designer clothing', 'luxury watches', 'premium fashion', 'haute couture'],
+  keywords: ['luxury fashion', 'designer clothing', 'luxury watches', 'premium fashion'],
   openGraph: {
     type: 'website',
-    locale: 'en_US',
-    url: process.env.NEXT_PUBLIC_APP_URL,
     siteName: 'LUXÉ',
     title: 'LUXÉ — Premium Fashion & Timepieces',
     description: 'Discover the finest luxury fashion, clothing, and watches.',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'LUXÉ — Premium Fashion & Timepieces',
-    description: 'Discover the finest luxury fashion, clothing, and watches.',
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
